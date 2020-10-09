@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Articles from "./components/Articles";
 
 function NotFound() {
   return <h1>Page not Found !</h1>;
@@ -13,8 +14,12 @@ function NotFound() {
 function Private(props) {
   return (
     <Switch>
-      <Route path="/" exact>
-        <Home />
+      <Route path="/articles">
+        <Articles
+          isLoggedIn={this.state.isLoggedIn}
+          userDetails={this.state.userDetails}
+          handleLogout={this.handleLogout}
+        />
       </Route>
       <Route component={NotFound} />
     </Switch>
@@ -25,13 +30,13 @@ function Public(props) {
   return (
     <Switch>
       <Route path="/" exact>
-        <Home />
+        <Home updateLoggedInUser={props.updateLoggedInUser} />
       </Route>
       <Route path="/login">
-        <Login />
+        <Login updateLoggedInUser={props.updateLoggedInUser} />
       </Route>
       <Route path="/signup">
-        <Signup />
+        <Signup updateLoggedInUser={props.updateLoggedInUser} />
       </Route>
       <Route component={NotFound} />
     </Switch>

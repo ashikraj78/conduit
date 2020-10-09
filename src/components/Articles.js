@@ -2,7 +2,7 @@ import React from "react";
 import TempelateCard from "./TempelateCard";
 import Header from "./Header";
 
-class Home extends React.Component {
+class Articles extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,6 @@ class Home extends React.Component {
     )
       .then((res) => res.json())
       .then((articles) => {
-        console.log(articles);
         this.setState({ articles: articles.articles });
       });
   }
@@ -30,4 +29,4 @@ class Home extends React.Component {
     );
   }
 }
-export default Home;
+export default Articles;

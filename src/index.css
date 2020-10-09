@@ -16,3 +16,11 @@ body {
   margin: 1rem;
   width: 30%;
 }
+
+.login-form {
+  margin-top: 2rem;
+  width: 30%;
+  padding: 2rem 1rem;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+}

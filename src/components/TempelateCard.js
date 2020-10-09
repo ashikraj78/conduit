@@ -36,12 +36,11 @@ function TempelateCard(props) {
                 <a href="#">#{list}</a>
               ))}
               <br />
-              <time datetime="2016-1-1">{article.updatedAt}</time>
+              <time>{article.updatedAt}</time>
             </div>
           </div>
         </div>
       ))}
-      ;
     </div>
   );
 }
