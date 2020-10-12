@@ -14,11 +14,11 @@ function NotFound() {
 function Private(props) {
   return (
     <Switch>
-      <Route path="/articles">
+      <Route path="/">
         <Articles
-          isLoggedIn={this.state.isLoggedIn}
-          userDetails={this.state.userDetails}
-          handleLogout={this.handleLogout}
+          isLoggedIn={props.isLoggedIn}
+          userDetails={props.userDetails}
+          handleLogout={props.handleLogout}
         />
       </Route>
       <Route component={NotFound} />
@@ -27,6 +27,7 @@ function Private(props) {
 }
 
 function Public(props) {
+  console.log("public router");
   return (
     <Switch>
       <Route path="/" exact>

@@ -4,14 +4,16 @@ import { withRouter } from "react-router-dom";
 import "bulma/css/bulma.css";
 import Header from "./Header";
 
-class Login extends React.Component {
-  state = {
-    email: "",
-    password: "",
-  };
-  handleInput = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
+function Login(props) {
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  // state = {
+  //   email: "",
+  //   password: "",
+  // };
+  // handleInput = ({ target: { name, value } }) => {
+  //   this.setState({ [name]: value });
+  // };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -26,62 +28,60 @@ class Login extends React.Component {
       .then(({ user }) => {
         console.log(user);
         if (user.token) {
-          this.props.updateLoggedInUser(user);
-          this.props.history.push("/articles");
+          props.updateLoggedInUser(user);
+          props.history.push("/articles");
           localStorage.setItem("authTokenConduit", user.token);
         }
       });
   };
 
-  render() {
-    console.log(this.props);
-    return (
-      <React.Fragment>
-        <div className="container">
-          <Header />
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            <div className="field">
-              <p className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  onChange={this.handleInput}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-check"></i>
-                </span>
-              </p>
-            </div>
-            <div className="field">
-              <p className="control has-icons-left">
-                <input
-                  className="input"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={this.handleInput}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-lock"></i>
-                </span>
-              </p>
-            </div>
-            <div className="field">
-              <p className="control">
-                <button className="button is-success" type="submit">
-                  Login
-                </button>
-              </p>
-            </div>
-          </form>
-        </div>
-      </React.Fragment>
-    );
-  }
+  console.log(props);
+  return (
+    <React.Fragment>
+      <div className="container">
+        <Header />
+        <form className="login-form" onSubmit={props.handleSubmit}>
+          <div className="field">
+            <p className="control has-icons-left has-icons-right">
+              <input
+                className="input"
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={props.handleInput}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control has-icons-left">
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={props.handleInput}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control">
+              <button className="button is-success" type="submit">
+                Login
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </React.Fragment>
+  );
 }
 export default withRouter(Login);

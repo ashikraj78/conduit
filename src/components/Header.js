@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "bulma/css/bulma.css";
 
 function Header(props) {
+  console.log("enter header");
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -48,7 +49,7 @@ function Header(props) {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <NavLink to="/signup" className="button is-primary">
+              <NavLink to="/signup" className="button is-light">
                 <strong>Sign up</strong>
               </NavLink>
               <NavLink to="/login" className="button is-light">
